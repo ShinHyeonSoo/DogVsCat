@@ -825,6 +825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalCat: {fileID: 1908907768964121095, guid: f2d74f3db99f9ce498941b85339f3d43, type: 3}
+  _fatCat: {fileID: 5781408213656940214, guid: 4773a3d036a31fc40956633d0d5df37b, type: 3}
+  _pirateCat: {fileID: 5000911756012378204, guid: 14cd3a986dd64a94fa4f9dccf73a6131, type: 3}
   _retryBtn: {fileID: 763576266}
   _levelFront: {fileID: 225395058}
   _levelText: {fileID: 397099185}

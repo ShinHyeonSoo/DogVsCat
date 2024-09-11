@@ -9,8 +9,11 @@ public class Cat : MonoBehaviour
 
     public RectTransform _front;
 
+    public int _type;
+
     float _full = 5.0f;
     float _energy = 0.0f;
+    float _speed = 0.05f;
 
     bool _isFull = false;
 
@@ -20,6 +23,22 @@ public class Cat : MonoBehaviour
         float x = Random.Range(-9.0f, 9.0f);
         float y = 30.0f;
         transform.position = new Vector2 (x, y);
+
+        if (_type == 1)
+        {
+            _speed = 0.05f;
+            _full = 5f;
+        }
+        else if (_type == 2)
+        {
+            _speed = 0.02f;
+            _full = 10f;
+        }
+        else if (_type == 3)
+        {
+            _speed = 0.1f;
+            _full = 5f;
+        }
     }
 
     // Update is called once per frame
@@ -27,7 +46,7 @@ public class Cat : MonoBehaviour
     {
         if(_energy < _full)
         {
-            transform.position += Vector3.down * 0.05f;
+            transform.position += Vector3.down * _speed;
 
             if(transform.position.y < -16.0f)
             {
@@ -57,7 +76,7 @@ public class Cat : MonoBehaviour
                 _front.localScale = new Vector3(_energy / _full, 1.0f, 1.0f);
                 Destroy(collision.gameObject);
 
-                if(_energy >= _full)
+                if(_energy == _full)
                 {
                     if(!_isFull)
                     {
