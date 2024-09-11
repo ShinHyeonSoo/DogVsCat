@@ -15,7 +15,6 @@ public class Cat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
         float x = Random.Range(-9.0f, 9.0f);
         float y = 30.0f;
         transform.position = new Vector2 (x, y);
@@ -27,6 +26,11 @@ public class Cat : MonoBehaviour
         if(_energy < _full)
         {
             transform.position += Vector3.down * 0.05f;
+
+            if(transform.position.y < -16.0f)
+            {
+                GameManager._instance.GameOver();
+            }
         }
         else
         {
@@ -55,6 +59,7 @@ public class Cat : MonoBehaviour
                 {
                     _hungryCat.SetActive(false);
                     _fullCat.SetActive(true);
+                    Destroy(gameObject, 3.0f);
                 }
             }
         }
