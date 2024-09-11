@@ -12,6 +12,8 @@ public class Cat : MonoBehaviour
     float _full = 5.0f;
     float _energy = 0.0f;
 
+    bool _isFull = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +59,15 @@ public class Cat : MonoBehaviour
 
                 if(_energy >= _full)
                 {
-                    _hungryCat.SetActive(false);
-                    _fullCat.SetActive(true);
-                    Destroy(gameObject, 3.0f);
+                    if(!_isFull)
+                    {
+                        _hungryCat.SetActive(false);
+                        _fullCat.SetActive(true);
+                        Destroy(gameObject, 3.0f);
+                        GameManager._instance.AddScore();
+
+                        _isFull = true;
+                    }
                 }
             }
         }
